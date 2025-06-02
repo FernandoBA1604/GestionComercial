@@ -24,19 +24,6 @@ Desarrollar una plataforma web que permita cargar archivos (como hojas de Excel)
 > - `/backend` → Código del servidor y lógica de negocio  
 > - `/frontend` → Interfaz web del usuario
 
-## 📂 Estructura del proyecto
-
-GestionComercial/
-│
-├── backend/
-│ └── ... (Spring Boot con conexión a Oracle y controladores API)
-│
-├── frontend/
-│ └── ... (HTML, CSS y JS para subir archivos y consumir la API)
-│
-└── README.md
-
-
 ## ✅ Funcionalidades principales
 
 - 📥 Carga de archivos Excel con información comercial
