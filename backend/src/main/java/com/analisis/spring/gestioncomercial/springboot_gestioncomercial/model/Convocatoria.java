@@ -8,39 +8,39 @@ import java.util.Date;
 public class Convocatoria {
 
     @Id
-    @Column(name = "idConvocatoria", length = 8, nullable = false)
+    @Column(name = "IDCONVOCATORIA", length = 8, nullable = false)
     private String idConvocatoria;
 
-    @Column(name = "nombreEntidad", length = 100)
+    @Column(name = "NOMBREENTIDAD", length = 100)
     private String nombreEntidad;
 
-    @Column(name = "fechaPublicacion")
+    @Column(name = "FECHAPUBLICACION")
     @Temporal(TemporalType.TIMESTAMP)
     private Date fechaPublicacion;
 
-    @Column(name = "tipoSeleccion", length = 1000)
+    @Column(name = "TIPOSELECCION", length = 1000)
     private String tipoSeleccion;
 
-    @Column(name = "objetoContratacion", length = 100)
+    @Column(name = "OBJETOCONTRATACION", length = 100)
     private String objetoContratacion;
 
-    @Column(name = "descripcion", length = 1000)
+    @Column(name = "DESCRIPCION", length = 1000)
     private String descripcion;
 
-    @Column(name = "alcance", length = 1000)
+    @Column(name = "ALCANCE", length = 1000)
     private String alcance;
 
-    @Column(name = "cantidad")
+    @Column(name = "CANTIDAD")
     private Integer cantidad;
 
-    @Column(name = "plazoDias")
+    @Column(name = "PLAZODIAS")
     private Integer plazoDias;
 
-    @Column(name = "fechaConvocatoria")
+    @Column(name = "FECHACONVOCATORIA")
     @Temporal(TemporalType.DATE)
     private Date fechaConvocatoria;
 
-    @Column(name = "prioridad")
+    @Column(name = "PRIORIDAD")
     private Integer prioridad;
 
     // Getters y Setters
