@@ -1,0 +1,14 @@
+{
+    "configurations": [
+        {
+            "type": "java",
+            "name": "Spring Boot-SpringbootGestioncomercialApplication<springboot-gestioncomercial>",
+            "request": "launch",
+            "cwd": "${workspaceFolder}",
+            "mainClass": "com.analisis.spring.gestioncomercial.springboot_gestioncomercial.SpringbootGestioncomercialApplication",
+            "projectName": "springboot-gestioncomercial",
+            "args": "",
+            "envFile": "${workspaceFolder}/.env"
+        }
+    ]
+}

@@ -4,13 +4,25 @@ import jakarta.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "Convocatoria")
-public class Convocatoria {
+@Table(name = "Convocatorias", uniqueConstraints = {
+    @UniqueConstraint(columnNames = {"IDCONVOCATORIA"})
+})
+public class Convocatorias {
 
     @Id
     @Column(name = "IDCONVOCATORIA", length = 8, nullable = false)
     private String idConvocatoria;
 
+    // Relaciones FK con Cliente y ObjetoContratacion
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CODPERSONA", referencedColumnName = "CODPERSONA")
+    private Cliente cliente;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CODOBJETO", referencedColumnName = "CODOBJETO")
+    private ObjetoContratacion objetoContratacion;
+
+    // Copia de atributos sin relación (sin prioridad)
     @Column(name = "NOMBREENTIDAD", length = 100)
     private String nombreEntidad;
 
@@ -20,9 +32,6 @@ public class Convocatoria {
 
     @Column(name = "TIPOSELECCION", length = 1000)
     private String tipoSeleccion;
-
-    @Column(name = "OBJETOCONTRATACION", length = 100)
-    private String objetoContratacion;
 
     @Column(name = "DESCRIPCION", length = 1000)
     private String descripcion;
@@ -40,8 +49,8 @@ public class Convocatoria {
     @Temporal(TemporalType.DATE)
     private Date fechaConvocatoria;
 
-    @Column(name = "PRIORIDAD")
-    private Integer prioridad;
+    // Constructor vacío
+    public Convocatorias() {}
 
     // Getters y Setters
 
@@ -51,6 +60,22 @@ public class Convocatoria {
 
     public void setIdConvocatoria(String idConvocatoria) {
         this.idConvocatoria = idConvocatoria;
+    }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
+    public ObjetoContratacion getObjetoContratacion() {
+        return objetoContratacion;
+    }
+
+    public void setObjetoContratacion(ObjetoContratacion objetoContratacion) {
+        this.objetoContratacion = objetoContratacion;
     }
 
     public String getNombreEntidad() {
@@ -75,14 +100,6 @@ public class Convocatoria {
 
     public void setTipoSeleccion(String tipoSeleccion) {
         this.tipoSeleccion = tipoSeleccion;
-    }
-
-    public String getObjetoContratacion() {
-        return objetoContratacion;
-    }
-
-    public void setObjetoContratacion(String objetoContratacion) {
-        this.objetoContratacion = objetoContratacion;
     }
 
     public String getDescripcion() {
@@ -123,13 +140,5 @@ public class Convocatoria {
 
     public void setFechaConvocatoria(Date fechaConvocatoria) {
         this.fechaConvocatoria = fechaConvocatoria;
-    }
-
-    public Integer getPrioridad() {
-        return prioridad;
-    }
-
-    public void setPrioridad(Integer prioridad) {
-        this.prioridad = prioridad;
     }
 }

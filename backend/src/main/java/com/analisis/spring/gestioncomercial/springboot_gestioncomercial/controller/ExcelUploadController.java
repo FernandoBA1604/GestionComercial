@@ -108,7 +108,7 @@ public class ExcelUploadController {
                         convocatoria.setPlazoDias(parseInteger(row.getCell(8)));
                         convocatoria.setFechaConvocatoria(parseDate(row.getCell(9)));
                         convocatoria.setPrioridad((int) prioridadValue);
-                        System.out.println("Fila " + i + " procesada: " + convocatoria);
+                        System.out.println("Fila " + i + " procesada: " + convocatoria.getPrioridad() + "ID: " + convocatoria.getIdConvocatoria());
                         convocatorias.add(convocatoria);
                     } catch (Exception e) {
                         System.out.println("Error procesando fila " + i + ": " + e.getMessage());
@@ -119,6 +119,9 @@ public class ExcelUploadController {
             System.out.println("Total de registros duplicados: " + duplicados); 
             if (convocatorias.isEmpty()) {
                 return ResponseEntity.ok("No se encontraron convocatorias con prioridad 1.");   
+            }
+            for(Convocatoria convocatoria : convocatorias) {
+                System.out.println("Convocatoria ID: " + convocatoria.getIdConvocatoria() + ", Prioridad: " + convocatoria.getPrioridad());
             }
             convocatoriaService.guardarConvocatorias(convocatorias);
             return ResponseEntity.ok("Se guardaron " + convocatorias.size() + " convocatorias con prioridad 1. " +
