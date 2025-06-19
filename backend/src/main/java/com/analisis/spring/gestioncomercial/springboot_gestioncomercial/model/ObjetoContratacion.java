@@ -4,30 +4,29 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "OBJETOCONTRATACION")
+@Table(name = "ObjetoContratacion")
 public class ObjetoContratacion {
 
     @Id
-    @Column(name = "CODOBJETO")
+    @Column(name = "CODOBJETO", length = 8, nullable = false)
     private String codObj;  // cambiado para coincidir con setCodObj en servicio
 
-    @Column(name = "DESCOBJ")
-    private String descObj;
+    @Column(name = "NOMOBJ", length = 100)
+    private String nomObj;
 
-    @Column(name = "VIGENTE")
-    private String vigente = "sí";
+    @Column(name = "VIGENTE", length = 1)
+    private String vigente;
 
     public ObjetoContratacion() {
-        if (this.codObj == null) {
-            this.codObj = UUID.randomUUID().toString();
-        }
+        this.codObj = UUID.randomUUID().toString().substring(0, 8); // Tomar solo los primeros 8 caracteres
+        this.vigente = "S";
     }
 
-    public ObjetoContratacion(String descObj) {
-        this.codObj = UUID.randomUUID().toString();
-        this.descObj = descObj;
-        this.vigente = "sí";
-    }
+    /*public ObjetoContratacion(String nomObj) {
+        this.codObj = UUID.randomUUID().toString().substring(0, 8); // Tomar solo los primeros 8 caracteres
+        this.nomObj = nomObj;
+        this.vigente = "S";
+    }*/
 
     // Getters y Setters
     public String getCodObj() {
@@ -38,12 +37,12 @@ public class ObjetoContratacion {
         this.codObj = codObj;
     }
 
-    public String getDescObj() {
-        return descObj;
+    public String getNomObj() {
+        return nomObj;
     }
 
-    public void setDescObj(String descObj) {
-        this.descObj = descObj;
+    public void setNomObj(String nomObj) {
+        this.nomObj = nomObj;
     }
 
     public String getVigente() {

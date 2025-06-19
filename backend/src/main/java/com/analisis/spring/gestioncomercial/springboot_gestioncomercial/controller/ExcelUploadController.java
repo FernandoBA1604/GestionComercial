@@ -1,6 +1,9 @@
 package com.analisis.spring.gestioncomercial.springboot_gestioncomercial.controller;
 
 import com.analisis.spring.gestioncomercial.springboot_gestioncomercial.model.Convocatoria;
+import com.analisis.spring.gestioncomercial.springboot_gestioncomercial.model.Convocatorias;
+import com.analisis.spring.gestioncomercial.springboot_gestioncomercial.model.ObjetoContratacion;
+import com.analisis.spring.gestioncomercial.springboot_gestioncomercial.model.Cliente;
 import com.analisis.spring.gestioncomercial.springboot_gestioncomercial.service.ConvocatoriaService;
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
 import org.apache.poi.ss.usermodel.*;
@@ -26,6 +29,9 @@ public class ExcelUploadController {
     @PostMapping("/uploadTest")
     public ResponseEntity<String> uploadFile(@RequestParam("file") MultipartFile file) {
         List<Convocatoria> convocatorias = new ArrayList<>();
+        List<Convocatorias> convocatorias2 = new ArrayList<>();
+        List<Cliente> clientes = new ArrayList<>();
+        List<ObjetoContratacion> objetosContratacion = new ArrayList<>();
 
         if (file == null || file.isEmpty()) {
             return ResponseEntity.badRequest().body("El archivo está vacío o no se envió.");
@@ -110,6 +116,29 @@ public class ExcelUploadController {
                         convocatoria.setPrioridad((int) prioridadValue);
                         System.out.println("Fila " + i + " procesada: " + convocatoria.getPrioridad() + "ID: " + convocatoria.getIdConvocatoria());
                         convocatorias.add(convocatoria);
+
+                        Cliente cliente = new Cliente();
+                        cliente.setNroRuc(getCellValueAsString(row.getCell(1)));
+                        clientes.add(cliente);
+
+                        ObjetoContratacion objetoContratacion = new ObjetoContratacion();
+                        objetoContratacion.setNomObj(getCellValueAsString(row.getCell(4)));
+                        objetosContratacion.add(objetoContratacion);
+
+                        Convocatorias convocatoria2 = new Convocatorias();
+                        convocatoria2.setIdConvocatoria(idConvocatoria);
+                        convocatoria2.setCliente(null);
+                        convocatoria2.setFechaPublicacion(parseDate(row.getCell(2)));
+                        convocatoria2.setTipoSeleccion(getCellValueAsString(row.getCell(3)));
+                        convocatoria2.setObjetoContratacion(null);
+                        convocatoria2.setDescripcion(getCellValueAsString(row.getCell(5)));
+                        convocatoria2.setAlcance(getCellValueAsString(row.getCell(6)));
+                        convocatoria2.setCantidad(parseInteger(row.getCell(7)));
+                        convocatoria2.setPlazoDias(parseInteger(row.getCell(8)));
+                        convocatoria2.setFechaConvocatoria(parseDate(row.getCell(9)));
+
+                        //System.out.println("Fila " + i + " procesada: " + convocatoria.getPrioridad() + "ID: " + convocatoria.getIdConvocatoria());
+                        convocatorias2.add(convocatoria2);
                     } catch (Exception e) {
                         System.out.println("Error procesando fila " + i + ": " + e.getMessage());
                     }
@@ -124,6 +153,10 @@ public class ExcelUploadController {
                 System.out.println("Convocatoria ID: " + convocatoria.getIdConvocatoria() + ", Prioridad: " + convocatoria.getPrioridad());
             }
             convocatoriaService.guardarConvocatorias(convocatorias);
+            convocatoriaService.guardarConvocatorias2(convocatorias2);
+            convocatoriaService.guardarClientes(clientes);
+            convocatoriaService.guardarObjetosContratacion(objetosContratacion);
+
             return ResponseEntity.ok("Se guardaron " + convocatorias.size() + " convocatorias con prioridad 1. " +
                     "Se ignoraron " + duplicados + " registros duplicados.");
 

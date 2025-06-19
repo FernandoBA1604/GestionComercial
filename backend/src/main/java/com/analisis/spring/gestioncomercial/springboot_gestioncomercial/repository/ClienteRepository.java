@@ -4,5 +4,4 @@ import com.analisis.spring.gestioncomercial.springboot_gestioncomercial.model.Cl
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface ClienteRepository extends JpaRepository<Cliente, String> {
-    Cliente findByNroRuc(String nroRuc);
 }

@@ -14,17 +14,13 @@ public class Convocatorias {
     private String idConvocatoria;
 
     // Relaciones FK con Cliente y ObjetoContratacion
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CODPERSONA", referencedColumnName = "CODPERSONA")
+   @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "CODPERSONA", nullable = true)  // Se permite NULL
     private Cliente cliente;
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CODOBJETO", referencedColumnName = "CODOBJETO")
+    @JoinColumn(name = "CODOBJETO", nullable = true)  // Se permite NULL
     private ObjetoContratacion objetoContratacion;
-
-    // Copia de atributos sin relación (sin prioridad)
-    @Column(name = "NOMBREENTIDAD", length = 100)
-    private String nombreEntidad;
 
     @Column(name = "FECHAPUBLICACION")
     @Temporal(TemporalType.TIMESTAMP)
@@ -76,14 +72,6 @@ public class Convocatorias {
 
     public void setObjetoContratacion(ObjetoContratacion objetoContratacion) {
         this.objetoContratacion = objetoContratacion;
-    }
-
-    public String getNombreEntidad() {
-        return nombreEntidad;
-    }
-
-    public void setNombreEntidad(String nombreEntidad) {
-        this.nombreEntidad = nombreEntidad;
     }
 
     public Date getFechaPublicacion() {

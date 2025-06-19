@@ -8,27 +8,25 @@ import java.util.UUID;
 public class Cliente {
 
     @Id
-    @Column(name = "CODPERSONA")
+    @Column(name = "CODPERSONA", length = 8, nullable = false)
     private String codPersona;
 
-    @Column(name = "NRORUC")
+    @Column(name = "NRORUC", length = 100)
     private String nroRuc;
 
-    @Column(name = "VIGENTE")
-    private String vigente = "sí";
+    @Column(name = "VIGENTE", length = 1)
+    private String vigente;
 
     public Cliente() {
-        // Genera UUID solo si codPersona es null
-        if (this.codPersona == null) {
-            this.codPersona = UUID.randomUUID().toString();
-        }
+        this.codPersona = UUID.randomUUID().toString().substring(0, 8); // Tomar solo los primeros 8 caracteres
+        this.vigente = "S";
     }
 
-    public Cliente(String nroRuc) {
-        this.codPersona = UUID.randomUUID().toString();
+    /*public Cliente(String nroRuc) {
+        this.codPersona = UUID.randomUUID().toString().substring(0, 8); // Tomar solo los primeros 8 caracteres
         this.nroRuc = nroRuc;
-        this.vigente = "sí";
-    }
+        this.vigente = "S";
+    }*/
 
     // Getters y Setters
     public String getCodPersona() {
