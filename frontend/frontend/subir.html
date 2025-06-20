@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Subir Archivo - Sistema de Gestión</title>
+  <link rel="icon" href="https://github.com/FernandoBA1604/GestionComercial/blob/master/imagens/System%20Request%20y%20Documento%20Vision%20-%20Grupo%202%20-%20ASI.png?raw=true"  type="image/png"/>
+  <link rel="stylesheet" href="stylesSubir.css">
+</head>
+<body>
+
+<div class="background"></div>
+<div class="overlay"></div>
+
+<main class="upload-container">
+  <h1 class="titulo-subir">Subir archivo</h1>
+  <form id="uploadForm" aria-label="Formulario para subir archivos">
+    <div class="form-group">
+      <label for="archivo" class="sr-only">Seleccionar archivo</label>
+      <input type="file" id="archivo" accept="*" required aria-required="true" />
+    </div>
+    <button type="submit" class="upload-button">Subir</button>
+
+    <div id="regresarButtonContainer" class="regresar-container">
+      <button id="regresarButton" type="button" class="regresar-button">Regresar</button>
+    </div>
+  </form>
+
+
+  <div id="fileInfo" class="file-info hidden">
+    <p><strong>Nombre:</strong> <span id="fileName"></span></p>
+    <p><strong>Tamaño:</strong> <span id="fileSize"></span> KB</p>
+  </div>
+
+  <div id="filePreview" class="file-preview hidden">
+    <img id="previewImage" src="" alt="Vista previa del archivo" />
+    <div id="nonImagePreview" class="hidden no-preview"></div>
+  </div>
+
+  <div id="successMessage" class="hidden success-message">
+    Archivo subido correctamente
+  </div>
+    <div id="failedMessage" class="hidden failed-message">
+    Error al subir el archivo
+  </div>
+</main>
+
+<script src="scriptsSub.js"></script>
+</body>
+</html>

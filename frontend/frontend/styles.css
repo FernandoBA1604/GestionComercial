@@ -1,0 +1,476 @@
+body {
+  scrollbar-color: blue lightblue;
+  margin: 0;
+  font-family: Arial, sans-serif;
+}
+
+body::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100px;
+  background-color: white;
+  z-index: -1;
+}
+
+body::before {
+  content: '';
+  position: fixed;
+  top: 100px;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f4ebe9;
+  z-index: -2;
+}
+
+header{
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  height: 100px;
+  background-color: transparent;
+  justify-content: space-around;
+  transition: 0.7s;
+  align-items: center;
+  padding: 5px 20px;
+  z-index: 10;
+}
+
+header.down{
+  background: #fff	;
+  padding: 0.8px 20px; 
+}
+
+header .logo{
+  display: flex;
+  align-items: center;
+  transition: 1.5s;
+}
+
+header .logo img{
+  height: 50px;
+  margin-right: 10px;
+  transition: 1.5s;
+}
+
+.nombre-grupo {
+  font-family: 'Cormorant Garamond', serif;
+  font-weight: 600;
+  position: relative;
+  display: inline-block;
+  padding-bottom: 3px; /* Espacio para el subrayado */
+  font-size: 20px;
+}
+
+.nombre-grupo::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: #d71d1a; /* Línea roja fina */
+  bottom: 0;
+  left: 0;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.nombre-grupo:hover::after {
+  transform: scaleX(1); /* Subrayado aparece al hover */
+}
+
+a{
+  text-decoration: none;
+  color: black;
+}
+
+nav a {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  padding: 10px 15px;
+  margin: 0 5px;
+  color: #333;
+  text-decoration: none;
+  position: relative;
+  font-size: 0.8rem;
+  letter-spacing: 0.5px;
+  transition: all 0.7s ease;
+}
+
+nav a::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  background-color: #d71d1a;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  transition: width 0.3s ease;
+}
+
+nav a:hover {
+  color: #000;
+}
+
+nav a:hover::after {
+  width: 80%;
+}
+
+nav a.active {
+  color: #d71d1a;
+}
+
+nav a.active::after {
+  width: 80%;
+}
+
+.zona1{
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+header.down .logo,
+header.down a{
+  color: black;
+}
+
+.banner {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-image: url('https://larepublica.cronosmedia.glr.pe/original/2024/07/10/668e90a952261b2f801a15d1.jpg');
+  background-attachment: local;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  z-index: 1;
+  mask-image: linear-gradient(
+    black 95%,
+    transparent
+  )
+}
+
+.banner-container {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.logo-banner {
+  display: inline-block;
+  vertical-align: middle;
+}
+
+.logo-banner img {
+  width: 100px;
+  height: auto;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.titulo {
+  margin-top: 10px;
+  font-size: 3.5rem;
+  font-weight: bold;
+  line-height: 1.2;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  text-shadow: 
+    -1px -1px 0 #000000 ,
+     1px -1px 0 #000000 ,
+    -1px  1px 0 #000000 ,
+     1px  1px 0 #000000 ;
+}
+
+.titulo span {
+  display: block;
+  font-size: 2.8rem;
+  font-weight: normal;
+  margin-top: -10px;
+}
+
+.linea-divisoria {
+  width: 40%;
+  height: 4px;
+  background-color: #ded6c2;
+  margin: 10px auto;
+}
+
+#btnSubir{
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #d71d1a;
+  color: white;
+  border-radius: 6px;
+  font-weight: bold;
+  border: none;
+  text-align: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  margin-top: 10px;
+}
+
+#btnSubir:hover{
+  background-color: #b23331;
+  transform: scale(1.1);
+}
+
+.contenido {
+  max-width: 800px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+.section {
+  background: white;
+  padding: 20px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+p{
+  margin-bottom: 40px;
+  font-size: 14px;
+}
+
+#sponsor {
+  scroll-margin-top: 0px;
+}
+
+.sponsor-section {
+  display: flex;
+  align-items: flex-start;
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 30px;
+  background-color: #ebe1e1;
+  border-radius: 10px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  gap: 30px;
+  box-sizing: border-box;
+  padding-top: 10px;
+}
+
+.sponsor-img {
+  flex: 0 0 200px;
+  margin-top: 50px;
+  margin-left: 10px;
+}
+
+.sponsor-img img {
+  width: 100%;
+  height: auto;
+  border-radius: 50%;
+  border: 5px solid #d71d1a;
+  object-fit: cover;
+  aspect-ratio: 1/1;
+}
+
+.sponsor-content {
+  flex: 1;
+  text-align: justify;
+  padding: 10px 0;
+}
+
+.sponsor-content h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: #2a2a2a;
+  margin-bottom: 15px;
+  position: relative;
+  display: inline-block;
+  margin-left: 30px;
+}
+
+.sponsor-content h2::after {
+  content: '';
+  position: absolute;
+  width: 50%;
+  height: 3px;
+  background-color: #d71d1a;
+  bottom: -5px;
+  left: 0;
+}
+
+.sponsor-content p {
+  font-family: 'Alegreya', serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: #555;
+  max-width: 550px;
+  text-align: justify;
+  text-justify: inter-word;
+  margin-bottom: 20px;
+  margin-left: 30px;
+}
+
+@media (max-width: 768px) {
+  .sponsor-section {
+    flex-direction: column;
+    text-align: center;
+    gap: 25px;
+  }
+  
+  .sponsor-content h2::after {
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30%;
+  }
+}
+
+.linea-divisoria-banner {
+  width: 50%;
+  height: 3px;
+  margin: 60px auto;
+  background: linear-gradient(90deg, 
+              transparent, 
+              #222 20%, 
+              #000 50%, 
+              #222 80%, 
+              transparent);
+  position: relative;
+}
+
+.linea-divisoria-banner::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 1px;
+  background: rgba(0,0,0,0.3);
+  bottom: -4px;
+  left: 0;
+  filter: blur(1px);
+}
+
+.integrantes-section {
+  max-width: 1200px;
+  margin: 50px auto;
+  padding: 30px;
+  text-align: center;
+}
+
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2rem;
+  color: #2a2a2a;
+  margin-bottom: 40px;
+  position: relative;
+  margin-top: -30px;
+}
+
+.section-title::after {
+  content: '';
+  position: absolute;
+  width: 100px;
+  height: 3px;
+  background-color: #d71d1a;
+  bottom: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.cards-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 20px;
+  max-width: 570px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
+
+.member-card {
+  width: 160px;
+  height: 230px;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+.member-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.member-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(215, 29, 26, 0.9), transparent);
+  color: white;
+  padding: 30px 20px;
+  transform: translateY(100%);
+  transition: transform 0.5s ease;
+  text-align: center;
+}
+
+.member-overlay h3 {
+  font-size: 1.5rem;
+  margin-bottom: 5px;
+  font-family: 'Cormorant Garamond', serif;
+}
+
+.member-overlay p {
+  font-size: 1rem;
+  margin-bottom: 15px;
+  font-family: 'Alegreya', serif;
+}
+
+.member-card:hover {
+  transform: translateY(-10px);
+}
+
+.member-card:hover .member-img {
+  transform: scale(1.1);
+}
+
+.member-card:hover .member-overlay {
+  transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+  .member-card {
+    width: 250px;
+    height: 320px;
+  }
+  
+  .member-overlay h3 {
+    font-size: 1.3rem;
+  }
+}
+
+nav a.nav-link.active {
+  color: #d71d1a;
+  font-weight: bold;
+}
+
+nav a.nav-link.active::after {
+  width: 80% !important;
+  background-color: #d71d1a !important;
+}
+
+section {
+  scroll-margin-top: 100px; 
+}
