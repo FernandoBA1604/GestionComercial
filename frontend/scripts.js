@@ -30,7 +30,3 @@ document.querySelectorAll('nav a.nav-link').forEach(link => {
 document.getElementById("btnSubir").addEventListener("click", function(){
   window.location.href="subir.html";
 });
-
-document.getElementById("btnVer").addEventListener("click", function(){
-  window.location.href="ver.html";
-});

@@ -15,7 +15,7 @@ body, html {
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('https://i.imgur.com/CyW2Yjw.png'); 
+  background-image: url('https://larepublica.cronosmedia.glr.pe/original/2024/07/10/668e90a952261b2f801a15d1.jpg'); 
   background-size: cover;
   background-position: center;
   z-index: -1;
@@ -166,9 +166,9 @@ button.upload-button:hover {
   padding: 12px;
   background-color: #3498db;
   color: white;
+  font-weight: bold;
   border: none;
   border-radius: 6px;
-  font-size: 1rem;
   cursor: pointer;
   transition: background-color 0.3s ease;
 }
