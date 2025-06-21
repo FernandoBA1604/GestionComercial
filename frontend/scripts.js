@@ -1,3 +1,4 @@
+
 window.addEventListener("scroll", function() {
   const header = document.querySelector("header");
   header.classList.toggle("down", this.window.scrollY>0);
@@ -29,8 +30,4 @@ document.querySelectorAll('nav a.nav-link').forEach(link => {
 
 document.getElementById("btnSubir").addEventListener("click", function(){
   window.location.href="subir.html";
-});
-
-document.getElementById("btnVer").addEventListener("click", function(){
-  window.location.href="ver.html";
 });

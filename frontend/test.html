@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Participantes</title>
+    <script src="participante.js" defer></script> <!-- Incluir el archivo participante.js -->
+</head>
+<body>
+
+    <h1>Gestión de Participantes</h1>
+
+    <!-- Crear Participante -->
+    <h2>Crear Participante</h2>
+    <label for="ruc">RUC del Participante:</label>
+    <input type="text" id="ruc" required><br>
+
+    <label for="puntajeTecnico">Puntaje Técnico:</label>
+    <input type="number" id="puntajeTecnico" required><br>
+
+    <label for="puntajeEconomico">Puntaje Económico:</label>
+    <input type="number" id="puntajeEconomico" required><br>
+
+    <label for="idConvocatoria">ID de la Convocatoria:</label>
+    <input type="text" id="idConvocatoria" required><br>
+
+    <button onclick="crearParticipante()">Crear Participante</button>
+
+    <!-- Buscar Participantes por ID de Convocatoria -->
+    <h2>Buscar Participantes por ID de Convocatoria</h2>
+    <label for="idConvocatoriaBusqueda">ID Convocatoria:</label>
+    <input type="text" id="idConvocatoriaBusqueda" required><br>
+    <button onclick="obtenerParticipantesPorConvocatoria()">Buscar Participantes</button>
+
+    <h3>Lista de Participantes:</h3>
+    <table id="participantesTabla">
+        <thead>
+            <tr>
+                <th>RUC</th>
+                <th>Puntaje Técnico</th>
+                <th>Puntaje Económico</th>
+                <th>Puntaje Total</th>
+            </tr>
+        </thead>
+        <tbody id="participantesLista">
+            <!-- Los participantes se agregarán aquí -->
+        </tbody>
+    </table>
+
+    <h3>Cantidad de Participantes:</h3>
+    <p id="cantidadParticipantes">0</p> <!-- Muestra la cantidad de participantes -->
+
+    <!-- Eliminar Participante -->
+    <h2>Eliminar Participante</h2>
+    <label for="rucEliminar">RUC del Participante a Eliminar:</label>
+    <input type="text" id="rucEliminar" required><br>
+    <button onclick="eliminarParticipante()">Eliminar Participante</button>
+
+    <!-- Mensajes de éxito o error -->
+    <div id="successMessage" class="hidden">¡Operación exitosa!</div>
+    <div id="failedMessage" class="hidden">¡Error al realizar la operación!</div>
+
+</body>
+</html>

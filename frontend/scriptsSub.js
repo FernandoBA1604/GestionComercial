@@ -51,21 +51,25 @@ document.addEventListener('DOMContentLoaded', function () {
     method: 'POST',
     body: formData
     })
-    .then(respone=> {
-      if (!respone.ok) {
-        throw new Error('Error en la subida del archivo');
+    .then(response => {
+      if (response.ok) {
+        return response.text();
+      } else {
+        return response.text().then(errorText => {
+          throw new Error(`Error del servidor ${errorText || 'respuesta no exitosa'}`);
+        });
       }
-      return respone.text();
     })
     .then(data => {
-      console.log('Archivo subido exitosamente:', data);
-      successMessage.classList.remove('hidden');
+    console.log('Archivo subido exitosamente:', data);
+    successMessage.classList.remove('hidden');
     setTimeout(() => {
       successMessage.classList.add('hidden');
-    }, 3000);
+      window.location.href = 'continuar.html';
+    }, 1500);
     })
     .catch(error => {
-      console.error('Error al subir el archivo:', error);
+      console.error('Error durante la subida del archivo:', error.message);
       failedMessage.classList.remove('hidden');
       setTimeout(() => {
         failedMessage.classList.add('hidden');
