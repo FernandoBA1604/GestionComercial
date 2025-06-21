@@ -4,7 +4,7 @@ import jakarta.persistence.*;
 import java.util.UUID;
 
 @Entity
-@Table(name = "ObjetoContratacion")
+@Table(name = "OBJETOCONTRATACION")
 public class ObjetoContratacion {
 
     @Id
@@ -14,12 +14,8 @@ public class ObjetoContratacion {
     @Column(name = "NOMOBJ", length = 100)
     private String nomObj;
 
-    @Column(name = "VIGENTE", length = 1)
-    private String vigente;
-
     public ObjetoContratacion() {
         this.codObj = UUID.randomUUID().toString().substring(0, 8); // Tomar solo los primeros 8 caracteres
-        this.vigente = "S";
     }
 
     /*public ObjetoContratacion(String nomObj) {
@@ -43,13 +39,5 @@ public class ObjetoContratacion {
 
     public void setNomObj(String nomObj) {
         this.nomObj = nomObj;
-    }
-
-    public String getVigente() {
-        return vigente;
-    }
-
-    public void setVigente(String vigente) {
-        this.vigente = vigente;
     }
 }

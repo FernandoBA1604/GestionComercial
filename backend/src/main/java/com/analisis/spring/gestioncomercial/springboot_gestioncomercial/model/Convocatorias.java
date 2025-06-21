@@ -2,9 +2,10 @@ package com.analisis.spring.gestioncomercial.springboot_gestioncomercial.model;
 
 import jakarta.persistence.*;
 import java.util.Date;
+import java.util.List;
 
 @Entity
-@Table(name = "Convocatorias", uniqueConstraints = {
+@Table(name = "CONVOCATORIAS", uniqueConstraints = {
     @UniqueConstraint(columnNames = {"IDCONVOCATORIA"})
 })
 public class Convocatorias {
@@ -12,6 +13,9 @@ public class Convocatorias {
     @Id
     @Column(name = "IDCONVOCATORIA", length = 8, nullable = false)
     private String idConvocatoria;
+
+    @OneToMany(mappedBy = "convocatoria")
+    private List<Participante> participantes;
 
     // Relaciones FK con Cliente y ObjetoContratacion
    @ManyToOne(fetch = FetchType.LAZY)

@@ -33,6 +33,10 @@ public class ConvocatoriaService {
         return convocatoriaRepository.existsById(idConvocatoria);
     }
 
+    public boolean existeConvocatorias(String idConvocatoria) {
+        return convocatoriasRepository.existsById(idConvocatoria);
+    }
+
     @Transactional
     public void guardarConvocatorias(List<Convocatoria> convocatoria) {
         convocatoriaRepository.saveAll(convocatoria);

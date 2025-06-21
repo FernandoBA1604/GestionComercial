@@ -118,7 +118,7 @@ public class ExcelUploadController {
                         convocatorias.add(convocatoria);
 
                         Cliente cliente = new Cliente();
-                        cliente.setNroRuc(getCellValueAsString(row.getCell(1)));
+                        cliente.setNombreEntidad(getCellValueAsString(row.getCell(1)));
                         clientes.add(cliente);
 
                         ObjetoContratacion objetoContratacion = new ObjetoContratacion();
