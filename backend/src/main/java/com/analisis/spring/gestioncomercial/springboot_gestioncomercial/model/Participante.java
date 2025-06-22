@@ -8,13 +8,18 @@ import jakarta.persistence.*;
 @Table(name = "PARTICIPANTE")
 @JsonIgnoreProperties({"hibernateLazyInitializer", "handler"}) 
 public class Participante {
+    
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "IDCONVOCATORIA", referencedColumnName = "IDCONVOCATORIA", nullable = false)
     private Convocatorias convocatoria;
 
     @Id
-    @Column(name = "RUC", length = 15, nullable = false)
-    private String ruc;
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // Auto-incrementable
+    @Column(name = "IDPARTICIPANTE", nullable = false)
+    private Long idParticipante;  
+
+    @Column(name = "NOMBREPARTICIPANTE", length = 75, nullable = false)
+    private String nombreParticipante;
 
     @Column(name = "PUNTAJETECNICO", nullable = false)
     private Integer puntajeTecnico;
@@ -28,13 +33,26 @@ public class Participante {
     // Constructor vacío
     public Participante() {}
 
-    // Getters y Setters
-    public String getRuc() {
-        return ruc;
+    // Getter para puntaje total calculado
+    public Integer getPuntajeTotal() {
+        return puntajeTecnico + puntajeEconomico;
     }
 
-    public void setRuc(String ruc) {
-        this.ruc = ruc;
+    // Getters y Setters
+    public Long getIdParticipante() {
+        return idParticipante;
+    }
+
+    public void setIdParticipante(Long idParticipante) {
+        this.idParticipante = idParticipante;
+    }
+
+    public String getNombreParticipante() {
+        return nombreParticipante;
+    }
+
+    public void setNombreParticipante(String nombreParticipante) {
+        this.nombreParticipante = nombreParticipante;
     }
 
     public Integer getPuntajeTecnico() {

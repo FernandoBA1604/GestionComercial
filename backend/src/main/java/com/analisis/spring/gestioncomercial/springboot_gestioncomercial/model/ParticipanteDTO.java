@@ -2,26 +2,34 @@ package com.analisis.spring.gestioncomercial.springboot_gestioncomercial.model;
 
 public class ParticipanteDTO {
 
-    private String ruc;
+    private Long idParticipante;  // ID del participante
+    private String nombreParticipante;
     private Integer puntajeTecnico;
     private Integer puntajeEconomico;
-    private Integer puntajeTotal;
 
     // Constructor
-    public ParticipanteDTO(String ruc, Integer puntajeTecnico, Integer puntajeEconomico) {
-        this.ruc = ruc;
+    public ParticipanteDTO(Long idParticipante, String nombreParticipante, Integer puntajeTecnico, Integer puntajeEconomico) {
+        this.idParticipante = idParticipante;
+        this.nombreParticipante = nombreParticipante;
         this.puntajeTecnico = puntajeTecnico;
         this.puntajeEconomico = puntajeEconomico;
-        this.puntajeTotal = puntajeTecnico + puntajeEconomico;  // Calcular puntaje total
     }
 
     // Getters y Setters
-    public String getRuc() {
-        return ruc;
+    public Long getIdParticipante() {
+        return idParticipante;
     }
 
-    public void setRuc(String ruc) {
-        this.ruc = ruc;
+    public void setIdParticipante(Long idParticipante) {
+        this.idParticipante = idParticipante;
+    }
+
+    public String getNombreParticipante() {
+        return nombreParticipante;
+    }
+
+    public void setNombreParticipante(String nombreParticipante) {
+        this.nombreParticipante = nombreParticipante;
     }
 
     public Integer getPuntajeTecnico() {
@@ -40,11 +48,8 @@ public class ParticipanteDTO {
         this.puntajeEconomico = puntajeEconomico;
     }
 
+    // Calcula el puntaje total basado en los puntajes técnico y económico
     public Integer getPuntajeTotal() {
-        return puntajeTotal;
-    }
-
-    public void setPuntajeTotal(Integer puntajeTotal) {
-        this.puntajeTotal = puntajeTotal;
+        return puntajeTecnico + puntajeEconomico;
     }
 }

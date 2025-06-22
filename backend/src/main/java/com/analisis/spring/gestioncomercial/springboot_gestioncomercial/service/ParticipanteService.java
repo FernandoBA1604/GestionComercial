@@ -68,9 +68,10 @@ public class ParticipanteService {
         for (Participante participante : participantes) {
             // Convertir cada Participante en ParticipanteDTO
             participanteDTOList.add(new ParticipanteDTO(
-                    participante.getRuc(),
-                    participante.getPuntajeTecnico(),
-                    participante.getPuntajeEconomico()
+                participante.getIdParticipante(),  
+                participante.getNombreParticipante(),
+                participante.getPuntajeTecnico(),
+                participante.getPuntajeEconomico()
             ));
         }
 
