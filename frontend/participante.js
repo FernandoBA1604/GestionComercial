@@ -18,30 +18,30 @@ async function verificarConvocatoriaExistente(idConvocatoria) {
     }
 }
 
-
 // Crear participante
 function crearParticipante() {
-    const idConvocatoria = document.getElementById('idConvocatoria').value;
+    const idConvocatoria = document.getElementById('idConvocatoria').value;  // Obtener ID de la convocatoria
 
     // Verificar si la convocatoria existe
     verificarConvocatoriaExistente(idConvocatoria).then(exists => {
         if (exists) {
-            const ruc = document.getElementById('ruc').value;
+            const nombreParticipante = document.getElementById('nombreParticipante').value;  // Obtener el nombre del participante
+
+            // Validar que los valores son correctos antes de enviarlos
             const puntajeTecnico = document.getElementById('puntajeTecnico').value;
             const puntajeEconomico = document.getElementById('puntajeEconomico').value;
 
-            // Validar que los valores son correctos antes de enviarlos
-            if (!ruc || !puntajeTecnico || !puntajeEconomico || !idConvocatoria) {
+            if (!nombreParticipante || !puntajeTecnico || !puntajeEconomico || !idConvocatoria) {
                 alert("Por favor, completa todos los campos.");
                 return;
             }
 
             const participante = {
-                ruc: ruc,
+                nombreParticipante: nombreParticipante,  // Ahora usamos nombreParticipante
                 puntajeTecnico: parseInt(puntajeTecnico),
                 puntajeEconomico: parseInt(puntajeEconomico),
                 convocatoria: {
-                    idConvocatoria: idConvocatoria
+                    idConvocatoria: idConvocatoria  // Asegúrate de pasar el ID correcto de la convocatoria
                 }
             };
 
@@ -77,7 +77,7 @@ function crearParticipante() {
 
 // Obtener participantes por ID de Convocatoria
 function obtenerParticipantesPorConvocatoria() {
-    const idConvocatoria = document.getElementById('idConvocatoriaBusqueda').value;
+    const idConvocatoria = document.getElementById('idConvocatoriaBusqueda').value;  // Obtener ID de convocatoria de la búsqueda
 
     // Llamar al backend para obtener los participantes
     fetch(`http://localhost:8080/api/participantes/convocatoria/${idConvocatoria}`)
@@ -95,7 +95,8 @@ function obtenerParticipantesPorConvocatoria() {
                 data.forEach(participante => {
                     const row = document.createElement('tr');
                     row.innerHTML = `
-                        <td>${participante.ruc}</td>
+                        <td>${participante.idParticipante}</td> <!-- Mostrar ID del Participante -->
+                        <td>${participante.nombreParticipante}</td>
                         <td>${participante.puntajeTecnico}</td>
                         <td>${participante.puntajeEconomico}</td>
                         <td>${participante.puntajeTotal}</td>
@@ -115,9 +116,14 @@ function obtenerParticipantesPorConvocatoria() {
 
 // Eliminar participante
 function eliminarParticipante() {
-    const ruc = document.getElementById('rucEliminar').value;
+    const idParticipante = document.getElementById('idParticipanteEliminar').value;  // Obtener ID del participante
 
-    fetch(`http://localhost:8080/api/participantes/eliminar/${ruc}`, {
+    if (!idParticipante) {
+        alert('Por favor, ingresa el ID del participante a eliminar.');
+        return;
+    }
+
+    fetch(`http://localhost:8080/api/participantes/eliminar/${idParticipante}`, {
         method: 'DELETE',
     })
     .then(response => {
